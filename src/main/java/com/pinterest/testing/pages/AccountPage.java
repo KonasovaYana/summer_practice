@@ -2,9 +2,10 @@ package com.pinterest.testing.pages;
 
 import static com.codeborne.selenide.Selenide.$x;
 
-public class SavedPinPage extends BasePage {
+public class AccountPage extends BasePage {
 
-    public SavedPinPage() {
+    public AccountPage() {
         super($x("//div[contains(@data-test-id,'sellithu')]"));
     }
+
 }
