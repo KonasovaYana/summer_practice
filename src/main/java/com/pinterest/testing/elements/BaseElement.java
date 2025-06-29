@@ -15,4 +15,5 @@ public class BaseElement {
     protected static SelenideElement byXpath(String xpath) {
         return $x(xpath);
     }
+    protected SelenideElement getElement() {return base;}
 }

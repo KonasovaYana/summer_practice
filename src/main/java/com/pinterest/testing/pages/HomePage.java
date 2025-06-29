@@ -1,16 +1,15 @@
 package com.pinterest.testing.pages;
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.SelenideElement;
-import java.io.File;
+import com.pinterest.testing.elements.Button;
+
 import static com.codeborne.selenide.Selenide.$x;
 
 public class HomePage extends BasePage {
     public HomePage() {
         super($x("//div[contains(@data-test-id, 'header')]"));
     }
+    private final Button openPinCreationButton = new Button(ElementHelper.byXpathPublic("//*[@id=\"VerticalNavContent\"]/div/div/div[1]/div[4]/div/div/div/a"));
     public void openPinCreation() {
-        $x("//*[@id=\"VerticalNavContent\"]/div/div/div[1]/div[4]/div/div/div/a").shouldBe(Condition.enabled).click();
-        SelenideElement uploadInput = $x("//*[@id='storyboard-upload-input']");
-        uploadInput.uploadFile(new File("C:\\Users\\Axie\\Downloads\\summer_practice\\src\\test\\resources\\flower.jpg"));
+        openPinCreationButton.click();
     }
 }
