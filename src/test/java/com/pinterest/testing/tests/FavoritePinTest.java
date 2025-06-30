@@ -35,6 +35,7 @@ public class FavoritePinTest extends BaseTest {
         accountPage.chooseFirstBoards();
         accountPage.chooseFirstPinBoards();
         accountPage.makePinFavourite();
+        assert accountPage.checkFavourites();
         home.openAccountPage();
         accountPage.choosePins();
         accountPage.chooseFavourites();

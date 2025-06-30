@@ -1,11 +1,11 @@
 package com.pinterest.testing.pages;
 
 import com.pinterest.testing.elements.Button;
-
 import static com.codeborne.selenide.Selenide.$x;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.codeborne.selenide.Condition;
 public class AccountPage extends BasePage {
     private static final Logger logger = LoggerFactory.getLogger(LoginPage.class);
     public AccountPage() {
@@ -32,6 +32,13 @@ public class AccountPage extends BasePage {
         logger.info("Добавляем пин в избранное");
         makePinFavouriteButton.click();
     }
+
+    private final Button FavouritesButton = Button.createByXpath(".//div[text()='Удалить из избранного']");
+    public boolean checkFavourites(){
+        logger.info("Проверяем, добавлен ли элемент в избранное");
+        com.codeborne.selenide.Selenide.sleep(1000);
+        return(FavouritesButton.isDisplayed());
+    }
     private final Button choosePinsButton = Button.createByXpath("//*[@id=\"_pins-profile-tab\"]");
     public void choosePins() {
         logger.info("Выбираем раздел 'пины'");
@@ -41,7 +48,27 @@ public class AccountPage extends BasePage {
     public void chooseFavourites() {
         logger.info("Выбираем раздел 'избранное'");
         chooseFavouritesButton.click();
-        com.codeborne.selenide.Selenide.sleep(3000);
+        com.codeborne.selenide.Selenide.sleep(1000);
     }
-
+    private final Button chooseMadeByMeButton = Button.createByXpath("//button[@data-test-id=\"created_by_you_button\"]");
+    public void chooseMadeByMe() {
+        logger.info("Выбираем раздел 'Созданные мной'");
+        chooseMadeByMeButton.click();
+    }
+    private final Button choosePinButton = Button.createByXpath("//div[@data-grid-item-idx=\"0\"]//img");
+    public void choosePin() {
+        logger.info("Выбираем первый пин из раздела");
+        choosePinButton.click();
+    }
+    private final Button chooseLikePinButton = Button.createByXpath("//button[@aria-label=\"Отреагировать\"]");
+    public void chooseLikePin() {
+        logger.info("Ставим лайк на пин");
+        chooseLikePinButton.click();
+        com.codeborne.selenide.Selenide.sleep(1000);
+    }
+    private final Button LikeButton = Button.createByXpath(".//div[text()='Мне нравится!']");
+    public boolean checkLikePin() {
+        logger.info("Проверяем поставлен ли лайк");
+        return LikeButton.isDisplayed();
+    }
 }

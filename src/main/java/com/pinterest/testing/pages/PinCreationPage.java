@@ -26,6 +26,11 @@ public class PinCreationPage extends BasePage {
         publishButton.click();
     }
     private final Button viewPublishedPinButton = Button.createByXpath("//*[contains(text(), 'Ваш пин опубликован')]");
+
+    public boolean isPublished(){
+        logger.info("Проверяем, появилось ли уведомление о публикации");
+        return(viewPublishedPinButton.isDisplayed());
+    }
     public void goToPublishedPin() {
         logger.info("Переход к опубликованному пину");
         viewPublishedPinButton.click();
