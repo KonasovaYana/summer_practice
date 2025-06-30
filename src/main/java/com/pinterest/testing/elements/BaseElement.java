@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class BaseElement {
     protected final SelenideElement base;
-    public BaseElement(SelenideElement element) {
+    protected BaseElement(SelenideElement element) {
         this.base = element;
     }
     public boolean isDisplayed() {

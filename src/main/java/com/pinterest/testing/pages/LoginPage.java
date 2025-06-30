@@ -1,4 +1,5 @@
 package com.pinterest.testing.pages;
+
 import com.pinterest.testing.elements.Button;
 import com.pinterest.testing.elements.Input;
 
@@ -11,16 +12,21 @@ public class LoginPage extends BasePage {
     private static final Logger logger = LoggerFactory.getLogger(LoginPage.class);
 
     public LoginPage() {
-        super($x("//div[@data-test-id='simple-login']"));}
+        super($x("//div[@data-test-id='simple-login']"));
+    }
+
+    private final Button enterButton =
+            Button.createByXpath("//button[.//div[text()='Войти']]");
     private final Input emailField =
-            new Input(ElementHelper.byXpathPublic("//input[@name='id']"));
+            Input.createByXpath("//input[@name='id']");
     private final Input passwordField =
-            new Input(ElementHelper.byXpathPublic("//input[@name='password']"));
+            Input.createByXpath("//input[@name='password']");
     private final Button loginButton =
-            new Button(ElementHelper.byXpathPublic("//button[@type='submit']"));
+            Button.createByXpath("//button[@type='submit']");
 
     public void login(String email, String password) {
         logger.info("Логин с email: {}", email);
+        enterButton.click();
         emailField.setValue(email);
         passwordField.setValue(password);
         loginButton.click();

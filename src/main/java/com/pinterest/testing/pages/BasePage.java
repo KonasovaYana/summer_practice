@@ -2,7 +2,6 @@ package com.pinterest.testing.pages;
 
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selenide.refresh;
 
 public abstract class BasePage {
     protected final SelenideElement baseType;
