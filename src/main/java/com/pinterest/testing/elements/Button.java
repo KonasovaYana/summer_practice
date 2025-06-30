@@ -1,6 +1,7 @@
 package com.pinterest.testing.elements;
-
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.WebElementCondition;
 
 public class Button extends BaseElement {
 
@@ -11,12 +12,11 @@ public class Button extends BaseElement {
         super(element);
     }
 
+    public boolean has(WebElementCondition condition) {
+        return base.has(condition);
+    }
     public void click() {
         base.click();
-    }
-
-    public void clickIfVisible() {
-        if (base.isDisplayed()) base.click();
     }
 }
 
