@@ -1,9 +1,7 @@
 package com.pinterest.testing.pages;
-import com.codeborne.selenide.Condition;
 import com.pinterest.testing.elements.Button;
 
 import static com.codeborne.selenide.Selenide.$x;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,9 +10,14 @@ public class HomePage extends BasePage {
     public HomePage() {
         super($x("//div[contains(@data-test-id, 'header')]"));
     }
-    private final Button openPinCreationButton = new Button(ElementHelper.byXpathPublic("//*[@id=\"VerticalNavContent\"]/div/div/div[1]/div[4]/div/div/div/a"));
+    private final Button openPinCreationButton = Button.createByXpath("//a[@data-test-id=\"create-tab\" and @href=\"/pin-creation-tool/\"]");
     public void openPinCreation() {
         logger.info("Открытие страницы создания пина");
         openPinCreationButton.click();
+    }
+    private final Button openAccountPageButton = Button.createByXpath("//a[@aria-label=\"Профиль\" and @href=\"/sellithu/\"]");
+    public void openAccountPage() {
+        logger.info("Открытие страницы ваших сохраненных идей");
+        openAccountPageButton.click();
     }
 }
