@@ -11,10 +11,6 @@ public class Button extends BaseElement {
     public Button(SelenideElement element) {
         super(element);
     }
-
-    public boolean has(WebElementCondition condition) {
-        return base.has(condition);
-    }
     public void click() {
         base.click();
     }
