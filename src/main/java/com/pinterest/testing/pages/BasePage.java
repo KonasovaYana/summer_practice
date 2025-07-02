@@ -10,9 +10,4 @@ public abstract class BasePage {
         this.baseType = baseType;
     }
 
-    @SuppressWarnings("unchecked")
-    public <T extends BasePage> T refresh() {
-        refresh();
-        return (T) this;
-    }
 }
