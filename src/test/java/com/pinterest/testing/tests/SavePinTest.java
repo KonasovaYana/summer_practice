@@ -9,7 +9,8 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-public class SavePinTeat extends BaseTest {
+
+public class SavePinTest extends BaseTest {
     private String getProperty(String key) {
         try (InputStream input = getClass().getClassLoader().getResourceAsStream("account.properties")) {
             Properties props = new Properties();
@@ -23,10 +24,11 @@ public class SavePinTeat extends BaseTest {
         }
     }
     @Test
-    public void testFavoritePin() {
+    public void testSavePin() {
         String email = getProperty("email");
         String password = getProperty("password");
         new LoginPage().login(email, password);
         HomePage home = new HomePage();
+
     }
 }
