@@ -1,31 +1,21 @@
 package com.pinterest.testing.tests;
 
 import com.pinterest.testing.BaseTest;
-import com.pinterest.testing.pages.AccountPage;
 import com.pinterest.testing.pages.HomePage;
 import com.pinterest.testing.pages.LoginPage;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
 public class SendPinTest extends BaseTest {
-    private String getProperty(String key) {
-        try (InputStream input = getClass().getClassLoader().getResourceAsStream("account.properties")) {
-            Properties props = new Properties();
-            if (input == null) {
-                throw new RuntimeException("account.properties not found");
-            }
-            props.load(input);
-            return props.getProperty(key);
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to load account properties", e);
-        }
-    }
+
+    private static final String PROPERTY_EMAIL = "email";
+    private static final String PROPERTY_PASSWORD = "password";
+
+    private static final String USER_PASSWORD = "axalzev";
+
     @Test
     public void testFavoritePin() {
-        String email = getProperty("email");
-        String password = getProperty("password");
+        String email = getProperty(PROPERTY_EMAIL);
+        String password = getProperty(PROPERTY_PASSWORD);
         LoginPage loginPage = new LoginPage();
         loginPage.clickEnterButton();
         loginPage.enterEmailField(email);
@@ -34,7 +24,7 @@ public class SendPinTest extends BaseTest {
         HomePage home = new HomePage();
         home.openFirstPin();
         home.sharedAccess();
-        home.writeUserName("axalzev");
+        home.writeUserName(USER_PASSWORD);
         home.sendPin();
         assert home.checkMessage();
         home.openChat();
