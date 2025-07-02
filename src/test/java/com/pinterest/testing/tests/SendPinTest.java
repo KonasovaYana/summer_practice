@@ -26,7 +26,11 @@ public class SendPinTest extends BaseTest {
     public void testFavoritePin() {
         String email = getProperty("email");
         String password = getProperty("password");
-        new LoginPage().login(email, password);
+        LoginPage loginPage = new LoginPage();
+        loginPage.clickEnterButton();
+        loginPage.enterEmailField(email);
+        loginPage.enterPasswordField(password);
+        loginPage.clickLoginButton();
         HomePage home = new HomePage();
         home.openFirstPin();
         home.sharedAccess();

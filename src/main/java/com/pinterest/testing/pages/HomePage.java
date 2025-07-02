@@ -1,59 +1,49 @@
 package com.pinterest.testing.pages;
 import com.pinterest.testing.elements.Button;
 import com.pinterest.testing.elements.Input;
-import static com.codeborne.selenide.Selenide.$x;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class HomePage extends BasePage {
-    private static final Logger logger = LoggerFactory.getLogger(LoginPage.class);
-    public HomePage() {
-        super($x("//div[contains(@data-test-id, 'header')]"));
-    }
-    private final Button openPinCreationButton = Button.createByXpath("//a[@data-test-id=\"create-tab\" and @href=\"/pin-creation-tool/\"]");
+
+    public HomePage() {super(byDataTestId("header"));}
+
+    private final Button openPinCreationButton = Button.byIdAndHrefCreate("create-tab", "/pin-creation-tool/");
+    private final Button openAccountPageButton = Button.byIdAndLabelCreate("header-profile","Профиль");
+    private final Button openFirstPinButton = Button.byXpathCreate("//div[@data-test-id='pin']//img\n");
+    private final Button sharedAccessButton = Button.byAriaLabelCreate("Отправить");
+    private final Input userName = Input.byAriaLabelCreate("Поле поиска");
+    private final Button sendPinButton = Button.byButtonIdCreate("sharesheet-contact-send-button");
+    private final Button openChatButton = Button.byButtonIdCreate("sharesheet-viewchat-button");
+
     public void openPinCreation() {
-        logger.info("Открытие страницы создания пина");
-        openPinCreationButton.click();
+        openPinCreationButton.click("Создать");
     }
-    private final Button openAccountPageButton = Button.createByXpath("//a[@aria-label=\"Профиль\" and @href=\"/sellithu/\"]");
+
     public void openAccountPage() {
-        logger.info("Открытие страницы ваших сохраненных идей");
-        openAccountPageButton.click();
+        openAccountPageButton.click("Профиль");
     }
-    private final Button openFirstPinButton = Button.createByXpath("//div[@data-test-id='pin']//img\n");
+
     public void openFirstPin() {
-        logger.info("Выбираем первый пин в ленте");
-        openFirstPinButton.click();
+        openFirstPinButton.click("Первый пин в ленте");
     }
-    private final Button sharedAccessButton = Button.createByXpath("//button[@aria-label='Отправить']\n");
+
     public void sharedAccess() {
-        logger.info("Нажимаем на кнопку 'общий доступ'");
-        sharedAccessButton.click();
+        sharedAccessButton.click("Общий доступ");
     }
 
-    private final Input userName = Input.createByXpath("//input[@aria-label='Поле поиска']\n");
-    public void writeUserName(String title) {
-        logger.info("Вводим имя пользователя");
-        userName.setValue(title);
+    public void writeUserName(String title) {;
+        userName.setValue("Вводим имя пользователя", title);
     }
 
-    private final Button sendPinButton = Button.createByXpath("//button[@data-test-id='sharesheet-contact-send-button']\n");
     public void sendPin() {
-        logger.info("Отправляем пин выбранному пользователю");
-        sendPinButton.click();
+        sendPinButton.click("Отправить");
     }
 
-    private final Button openChatButton = Button.createByXpath("//button[@data-test-id='sharesheet-viewchat-button']\n");
-
-    public boolean checkMessage(){
-        logger.info("Проверяем, отправилось ли сообщение");
-        return openChatButton.isDisplayed();
+    public boolean checkMessage(){;
+        return openChatButton.isDisplayed("См. чат");
     }
+
     public void openChat() {
-        logger.info("Переходим в чат с пользователем");
-        openChatButton.click();
+        openChatButton.click("См. чат");
         com.codeborne.selenide.Selenide.sleep(2000);
     }
-
-
 }

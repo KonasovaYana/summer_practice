@@ -1,35 +1,33 @@
 package com.pinterest.testing.pages;
-
 import com.pinterest.testing.elements.Button;
 import com.pinterest.testing.elements.Input;
 
-import static com.codeborne.selenide.Selenide.$x;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public class LoginPage extends BasePage {
-    private static final Logger logger = LoggerFactory.getLogger(LoginPage.class);
 
-    public LoginPage() {
-        super($x("//div[@data-test-id='simple-login']"));
-    }
+    public LoginPage() {super(byDataTestId("simple-login"));}
 
     private final Button enterButton =
-            Button.createByXpath("//button[.//div[text()='Войти']]");
+            Button.byButtonPhraseInXpathCreate("Войти");
     private final Input emailField =
-            Input.createByXpath("//input[@name='id']");
+            Input.byInputNameCreate("id");
     private final Input passwordField =
-            Input.createByXpath("//input[@name='password']");
+            Input.byInputNameCreate("password");
     private final Button loginButton =
-            Button.createByXpath("//button[@type='submit']");
+            Button.byButtonTypeCreate("submit");
 
-    public void login(String email, String password) {
-        logger.info("Логин с email: {}", email);
-        enterButton.click();
-        emailField.setValue(email);
-        passwordField.setValue(password);
-        loginButton.click();
-        logger.info("Кнопка входа нажата");
+    public void clickEnterButton() {
+        enterButton.click("Войти");
+    }
+
+    public void enterEmailField(String email) {
+        emailField.setValue("Email", email);
+    }
+
+    public void enterPasswordField(String password) {
+        passwordField.setValue("Password", password);
+    }
+
+    public void clickLoginButton() {
+        loginButton.click("Войти");
     }
 }
