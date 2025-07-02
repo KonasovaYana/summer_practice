@@ -15,7 +15,7 @@ public class HomePage extends BasePage {
         logger.info("Открытие страницы создания пина");
         openPinCreationButton.click();
     }
-    private final Button openAccountPageButton = Button.createByXpath("//div[@data-test-id=\"header-profile\"]//a[@aria-label=\"Профиль\"]");
+    private final Button openAccountPageButton = Button.createByXpath("//a[@aria-label=\"Профиль\" and @href=\"/sellithu/\"]");
     public void openAccountPage() {
         logger.info("Открытие страницы ваших сохраненных идей");
         openAccountPageButton.click();
@@ -54,4 +54,6 @@ public class HomePage extends BasePage {
         openChatButton.click();
         com.codeborne.selenide.Selenide.sleep(2000);
     }
+
+
 }
