@@ -1,18 +1,79 @@
 package com.pinterest.testing.elements;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.WebElementCondition;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Button extends BaseElement {
 
-    public static Button createByXpath(String xpath) {
-        return new Button(BaseElement.byXpath(xpath));
-    }
     public Button(SelenideElement element) {
         super(element);
     }
-    public void click() {
+
+    public void click(String elementName) {
+        logger.info("Нажатие на кнопку: {}", elementName);
         base.click();
     }
+
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    public static Button byXpathCreate(String xpath) {
+        return new Button(BaseElement.byXpath(xpath));
+    }
+
+    public static Button byPhraseInXpathCreate(String phrase) {
+        String xpath = ".//div[text()='" + phrase + "']";
+        return new Button(BaseElement.byXpath(xpath));
+    }
+
+    public static Button byButtonPhraseInXpathCreate(String phrase) {
+        String xpath = "//button[.//div[text()='" + phrase + "']]";
+        return new Button(BaseElement.byXpath(xpath));
+    }
+
+    public static Button byButtonTypeCreate(String phrase) {
+        String xpath = "//button[@type='" + phrase + "']";
+        return new Button(BaseElement.byXpath(xpath));
+    }
+
+    public static Button byTextContainCreate(String phrase) {
+        String xpath = "//*[contains(text(), '" + phrase + "')]";
+        return new Button(BaseElement.byXpath(xpath));
+    }
+
+    public static Button byIdAndHrefCreate(String phrase1, String phrase2) {
+        String xpath = "//a[@data-test-id='" + phrase1 + "' and @href='" + phrase2 + "']" ;
+        return new Button(BaseElement.byXpath(xpath));
+    }
+
+    public static Button byIdAndLabelCreate(String phrase1, String phrase2) {
+        String xpath = "//div[@data-test-id=\"" + phrase1 + "\"]//a[@aria-label=\"" + phrase2 + "\"]" ;
+        return new Button(BaseElement.byXpath(xpath));
+    }
+
+    public static Button byAriaLabelCreate(String phrase) {
+        String xpath = "//button[@aria-label='" + phrase + "']\n";
+        return new Button(BaseElement.byXpath(xpath));
+    }
+    public static Button byButtonIdCreate(String phrase) {
+        String xpath = "//button[@data-test-id='" + phrase + "']\n";
+        return new Button(BaseElement.byXpath(xpath));
+    }
+
+    public static Button byIdCreate(String phrase) {
+        String xpath = "//*[@id='" + phrase + "']";
+        return new Button(BaseElement.byXpath(xpath));
+    }
+
+    public static Button byRoleCreate(String phrase) {
+        String xpath = "(//div[@role='" + phrase + "'])[1]//a\n";
+        return new Button(BaseElement.byXpath(xpath));
+    }
+
+    public static Button byGridIdCreate(String phrase) {
+        String xpath = "//div[@data-grid-item-idx='" + phrase + "']//img";
+        return new Button(BaseElement.byXpath(xpath));
+    }
+
 }
 

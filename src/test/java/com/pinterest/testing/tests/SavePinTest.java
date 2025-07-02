@@ -27,7 +27,11 @@ public class SavePinTest extends BaseTest {
     public void testSavePin() {
         String email = getProperty("email");
         String password = getProperty("password");
-        new LoginPage().login(email, password);
+        LoginPage loginPage = new LoginPage();
+        loginPage.clickEnterButton();
+        loginPage.enterEmailField(email);
+        loginPage.enterPasswordField(password);
+        loginPage.clickLoginButton();
         HomePage home = new HomePage();
 
     }
