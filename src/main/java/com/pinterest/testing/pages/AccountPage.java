@@ -3,6 +3,7 @@ package com.pinterest.testing.pages;
 import com.pinterest.testing.elements.Button;
 import static com.codeborne.selenide.Selenide.$x;
 
+import com.pinterest.testing.elements.Input;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.codeborne.selenide.Condition;
@@ -70,5 +71,19 @@ public class AccountPage extends BasePage {
     public boolean checkLikePin() {
         logger.info("Проверяем поставлен ли лайк");
         return LikeButton.isDisplayed();
+    }
+    private final Button chooseNewBoardButton = Button.createByXpath("//button[.//div[text()=\"Создать доску\"]]");
+    public void chooseNewBoard() {
+        logger.info("Создаем новую доску");
+        chooseNewBoardButton.click();
+        com.codeborne.selenide.Selenide.sleep(1000);
+    }
+    private final Input NewBoardField = Input.createByXpath("//input[@placeholder=\"Например, «Куда пойти?» или «Рецепты»\"]\n");
+    private final Button NewBoardAcceptButton = Button.createByXpath("//button[.//div[text()=\"Создать\"]]");
+    public void WriteNameNewBoard() {
+        logger.info("Вводим названия для новой доски");
+        NewBoardField.setValue("Цветы");
+        NewBoardAcceptButton.click();
+        com.codeborne.selenide.Selenide.sleep(1000);
     }
 }

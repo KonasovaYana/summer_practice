@@ -29,6 +29,9 @@ public class SavePinTest extends BaseTest {
         String password = getProperty("password");
         new LoginPage().login(email, password);
         HomePage home = new HomePage();
-
+        home.openAccountPage();
+        AccountPage accountPage = new AccountPage();
+        accountPage.chooseNewBoard();
+        accountPage.WriteNameNewBoard();
     }
 }
