@@ -19,9 +19,7 @@ public class LoginPage extends BasePage {
         enterButton.click("Войти");
     }
 
-    public void enterEmailField(String email) {
-        emailField.setValue("Email", email);
-    }
+    public void enterEmailField(String email) { emailField.setValue("Email", email);}
 
     public void enterPasswordField(String password) {
         passwordField.setValue("Password", password);
