@@ -10,6 +10,7 @@ public class SavePinTest extends BaseTest {
 
     private static final String PROPERTY_EMAIL = "email";
     private static final String PROPERTY_PASSWORD = "password";
+    private static final String BOARD_NAME = "Первая доска";
 
     @Test
     public void testSavePin() {
@@ -21,6 +22,11 @@ public class SavePinTest extends BaseTest {
         loginPage.enterPasswordField(password);
         loginPage.clickLoginButton();
         HomePage home = new HomePage();
-
+        home.openFirstPin();
+        home.profile();
+        home.createBoard();
+        home.enterBoardName(BOARD_NAME);
+        home.addBoard();
+        assert home.checkSavedPin();
     }
 }

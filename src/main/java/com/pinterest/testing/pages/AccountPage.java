@@ -1,5 +1,7 @@
 package com.pinterest.testing.pages;
 import com.pinterest.testing.elements.Button;
+import com.pinterest.testing.elements.Input;
+
 public class AccountPage extends BasePage {
 
     public AccountPage() {super(byDataTestId("header-profile"));}
@@ -15,6 +17,12 @@ public class AccountPage extends BasePage {
     private final Button choosePinButton = Button.byGridIdCreate("0");
     private final Button chooseLikePinButton = Button.byAriaLabelCreate("Отреагировать");
     private final Button LikeButton = Button.byPhraseInXpathCreate("Мне нравится!");
+//    private final Button createSmthButton = Button.byAriaLabelCreate("Создать пин или доску");
+//    private final Button createBoardButton = Button.byButtonIdCreate("Create board");
+//    private final Input boardName = Input.byInputIdCreate("boardEditName");
+//    private final Button createNamedBoardButton = Button.byButtonIdCreate("board-form-submit-button");
+//    private final Button openHomePageButton = Button.byIdAndACreate("home-tab");
+
 
     public void chooseBoards() {
         chooseBoardsButton.click("Доски");
@@ -33,7 +41,6 @@ public class AccountPage extends BasePage {
     }
 
     public boolean checkFavourites(){
-        com.codeborne.selenide.Selenide.sleep(1000);
         return(FavouritesButton.isDisplayed("Удалить из избранного"));
     }
 
@@ -43,7 +50,6 @@ public class AccountPage extends BasePage {
 
     public void chooseFavourites() {
         chooseFavouritesButton.click("Избранное");
-        com.codeborne.selenide.Selenide.sleep(1000);
     }
 
     public void chooseMadeByMe() {
@@ -56,10 +62,28 @@ public class AccountPage extends BasePage {
 
     public void chooseLikePin() {
         chooseLikePinButton.click("Отреагировать");
-        com.codeborne.selenide.Selenide.sleep(1000);
     }
 
-    public boolean checkLikePin() {;
+    public boolean checkLikePin() {
         return LikeButton.isDisplayed("Мне нравится!");
     }
+//    public void createNew(){
+//        createSmthButton.click("Создать");
+//    }
+//
+//    public void createNewBoard(){
+//        createBoardButton.click("Доска");
+//    }
+//
+//    public void enterBoardName(String name){
+//        boardName.setValue("Название", name);
+//    }
+//
+//    public void createNewNamedBoard(){
+//        createNamedBoardButton.click("Создать");
+//    }
+//
+//    public void openHomePage(){
+//        openHomePageButton.click("Домашняя страница");
+//    }
 }

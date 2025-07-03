@@ -30,6 +30,5 @@ public class PinCreationPage extends BasePage {
 
     public void goToPublishedPin() {
         viewPublishedPinButton.click("Ваш пин опубликован");
-        com.codeborne.selenide.Selenide.sleep(3000);
     }
 }

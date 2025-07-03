@@ -8,11 +8,19 @@ public class HomePage extends BasePage {
 
     private final Button openPinCreationButton = Button.byIdAndHrefCreate("create-tab", "/pin-creation-tool/");
     private final Button openAccountPageButton = Button.byIdAndLabelCreate("header-profile","Профиль");
-    private final Button openFirstPinButton = Button.byXpathCreate("//div[@data-test-id='pin']//img\n");
+    private final Button openFirstPinButton = Button.byXpathCreate("//div[@data-test-id='pin']//img");
     private final Button sharedAccessButton = Button.byAriaLabelCreate("Отправить");
     private final Input userName = Input.byAriaLabelCreate("Поле поиска");
     private final Button sendPinButton = Button.byButtonIdCreate("sharesheet-contact-send-button");
     private final Button openChatButton = Button.byButtonIdCreate("sharesheet-viewchat-button");
+    private final Button profileButton = Button.byButtonIdCreate("PinBetterSaveDropdown");
+    private final Button createBoardButton = Button.byPhraseInXpathCreate("Создать доску");
+    private final Input boardName = Input.byInputIdCreate("boardEditName");
+    private final Button addBoardButton = Button.byPhraseInXpathCreate("Создать");
+    private final Button SavedPinButton = Button.byPhraseInXpathCreate("Сохранено на доске");
+
+    //    private final Input searchBoardName = Input.byAriaLabelCreate("Поиск по вашим доскам");
+//    private final Button saveButton = Button.byButtonPhraseInXpathCreate("board-row-save-button-container");
 
     public void openPinCreation() {
         openPinCreationButton.click("Создать");
@@ -44,6 +52,33 @@ public class HomePage extends BasePage {
 
     public void openChat() {
         openChatButton.click("См. чат");
-        com.codeborne.selenide.Selenide.sleep(2000);
     }
+
+    public void profile(){
+        profileButton.click("Профиль");
+    }
+
+    public void createBoard(){
+        createBoardButton.click("Создать доску");
+    }
+
+    public void enterBoardName(String title) {;
+        boardName.setValue("Название", title);
+    }
+
+    public void addBoard(){
+        addBoardButton.click("Создать");
+    }
+
+    public boolean checkSavedPin() {
+        return SavedPinButton.isDisplayed("Сохранено на доске");
+    }
+
+//    public void boardName(String name){
+//        searchBoardName.setValue("Поиск", name);
+//    }
+//
+//    public void save(){
+//        saveButton.click("Сохранить");
+//    }
 }

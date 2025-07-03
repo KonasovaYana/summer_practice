@@ -9,11 +9,10 @@ public class SendPinTest extends BaseTest {
 
     private static final String PROPERTY_EMAIL = "email";
     private static final String PROPERTY_PASSWORD = "password";
-
     private static final String USER_PASSWORD = "axalzev";
 
     @Test
-    public void testFavoritePin() {
+    public void testSendPin() {
         String email = getProperty(PROPERTY_EMAIL);
         String password = getProperty(PROPERTY_PASSWORD);
         LoginPage loginPage = new LoginPage();
