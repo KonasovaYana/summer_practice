@@ -29,6 +29,11 @@ public class AccountPage extends BasePage {
     private final Button chooseOtherActionsButton = Button.byAriaLabelCreate("Другие действия");private final Button chooseCorrectPinButton = Button.byButtonIdCreate("pin-action-dropdown-edit-pin");
     private final Input editDescriptionButton = Input.byDivAriaCreate("Опишите ваш пин");private final Button saveDescriptionButton = Button.byButtonIdCreate("save-pin-button");
     private final Button checkSavedDescriptionButton = Button.byIdAndContainsCreate("truncated-description", "Этот пин красивый!");
+    private final Input commentInput = Input.byIdAndContentCreate("dweb-comment-editor-container", "true");
+    private final Button chooseEmojiButton = Button.byAriaLabelCreate("Выбрать эмодзи");
+    private final Button emojiButton = Button.byAriaLabelCreate("smiley");
+    private final Button sendCommentButton = Button.byAriaLabelCreate("Опубликовать");
+    private final Button checkComment = Button.byDivIdCreate("commentThread-comment");
 
     public void chooseBoards() {
         chooseBoardsButton.click("Доски");
@@ -129,5 +134,25 @@ public class AccountPage extends BasePage {
 
     public boolean checkSavedDescriptionDescription(String title) {
         return checkSavedDescriptionButton.isDisplayed(title);
+    }
+
+    public void writeComment(String comment) {
+        commentInput.setValue("Добавить комментарий", comment);
+    }
+
+    public void clickChooseEmoji(){
+        chooseEmojiButton.click("Выбрать эмодзи");
+    }
+
+    public void chooseEmoji(){
+        emojiButton.click("Улыбающийся смайлик");
+    }
+
+    public void sendComment() {
+        sendCommentButton.click("Опубликовать");
+    }
+
+    public boolean checkCommentSend(String title) {
+        return checkComment.isDisplayed(title);
     }
 }
