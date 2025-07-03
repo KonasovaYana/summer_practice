@@ -17,12 +17,18 @@ public class AccountPage extends BasePage {
     private final Button choosePinButton = Button.byGridIdCreate("0");
     private final Button chooseLikePinButton = Button.byAriaLabelCreate("Отреагировать");
     private final Button LikeButton = Button.byPhraseInXpathCreate("Мне нравится!");
-//    private final Button createSmthButton = Button.byAriaLabelCreate("Создать пин или доску");
-//    private final Button createBoardButton = Button.byButtonIdCreate("Create board");
-//    private final Input boardName = Input.byInputIdCreate("boardEditName");
-//    private final Button createNamedBoardButton = Button.byButtonIdCreate("board-form-submit-button");
-//    private final Button openHomePageButton = Button.byIdAndACreate("home-tab");
-
+    private final Button chooseBoardButton = Button.byHTitleCreate("Вторая доска");
+    private final Button chooseFirstPinOnBoardButton = Button.byRoleContainsCreate("group", "XiG zI7 iyn Hsu");
+    private final Button profileButton = Button.byButtonIdCreate("PinBetterSaveDropdown");
+    private final Button chooseFirstBoardButton = Button.byDivIdCreate("board-row-Первая доска");
+    private final Button EditButton = Button.byAriaLabelCreate("Другие действия");
+    private final Button EditBoardButton = Button.bySpanTextCreate("Изменить пин");
+    private final Button DeleteButton = Button.byButtonPhraseInXpathCreate("Удалить");
+    private final Button ConfirmDelete = Button.byTextContainCreate("Пин удален");
+    private final Button SavedPinButton = Button.byPhraseInXpathCreate("Сохранено");
+    private final Button chooseOtherActionsButton = Button.byAriaLabelCreate("Другие действия");private final Button chooseCorrectPinButton = Button.byButtonIdCreate("pin-action-dropdown-edit-pin");
+    private final Input editDescriptionButton = Input.byDivAriaCreate("Опишите ваш пин");private final Button saveDescriptionButton = Button.byButtonIdCreate("save-pin-button");
+    private final Button checkSavedDescriptionButton = Button.byIdAndContainsCreate("truncated-description", "Этот пин красивый!");
 
     public void chooseBoards() {
         chooseBoardsButton.click("Доски");
@@ -67,23 +73,61 @@ public class AccountPage extends BasePage {
     public boolean checkLikePin() {
         return LikeButton.isDisplayed("Мне нравится!");
     }
-//    public void createNew(){
-//        createSmthButton.click("Создать");
-//    }
-//
-//    public void createNewBoard(){
-//        createBoardButton.click("Доска");
-//    }
-//
-//    public void enterBoardName(String name){
-//        boardName.setValue("Название", name);
-//    }
-//
-//    public void createNewNamedBoard(){
-//        createNamedBoardButton.click("Создать");
-//    }
-//
-//    public void openHomePage(){
-//        openHomePageButton.click("Домашняя страница");
-//    }
+
+    public void chooseBoard() {
+        chooseBoardButton.click("Выбираем вторую доску");
+    }
+
+    public void chooseFirstPinOnBoard() {
+        chooseFirstPinOnBoardButton.click("Выбираем первый пин на доске");
+    }
+
+    public void profile() {
+        profileButton.click("выбор доски для сохранения");
+    }
+
+    public void chooseFirstBoard() {
+        chooseFirstBoardButton.click("сохраняем на первую доску");
+    }
+
+    public void chooseEdit() {
+        EditButton.click("Изменяем пин");
+    }
+
+    public void chooseBoardEdit() {
+        EditBoardButton.click("Изменяем пин на доске");
+    }
+
+    public void chooseDelete() {
+        DeleteButton.click("Удаляем пин с доски");
+    }
+
+
+    public boolean checkConfirmDeletePin() {
+        return ConfirmDelete.isDisplayed("Пин удален");
+    }
+
+    public boolean checkSavedPin() {
+        return SavedPinButton.isDisplayed("Сохранено");
+    }
+
+    public void chooseOtherActions() {
+        chooseOtherActionsButton.click("Другие действия");
+    }
+
+    public void chooseCorrectPin() {
+        chooseCorrectPinButton.click("Изменить");
+    }
+
+    public void editDescription(String title) {
+        editDescriptionButton.setValue("Описание", title);
+    }
+
+    public void saveDescription() {
+        saveDescriptionButton.click("Сохранить");
+    }
+
+    public boolean checkSavedDescriptionDescription(String title) {
+        return checkSavedDescriptionButton.isDisplayed(title);
+    }
 }

@@ -41,11 +41,6 @@ public class Button extends BaseElement {
         return new Button(BaseElement.byXpath(xpath));
     }
 
-    public static Button byIdAndACreate(String phrase) {
-        String xpath = "//a[@data-test-id='" + phrase + "']";
-        return new Button(BaseElement.byXpath(xpath));
-    }
-
     public static Button byIdAndHrefCreate(String phrase1, String phrase2) {
         String xpath = "//a[@data-test-id='" + phrase1 + "' and @href='" + phrase2 + "']" ;
         return new Button(BaseElement.byXpath(xpath));
@@ -80,4 +75,27 @@ public class Button extends BaseElement {
         return new Button(BaseElement.byXpath(xpath));
     }
 
+    public static Button byHTitleCreate(String phrase) {
+        String xpath = "//h2[@title='" + phrase + "']";
+        return new Button(BaseElement.byXpath(xpath));
+    }
+
+    public static Button byRoleContainsCreate(String phrase1, String phrase2) {
+        String xpath = "(//div[@role=\"" + phrase1 + "\" and contains(@class, \"" + phrase2 + "\")])[1]" ;
+        return new Button(BaseElement.byXpath(xpath));
+    }
+
+    public static Button byDivIdCreate(String phrase) {
+        String xpath = "//div[@data-test-id='" + phrase + "']";
+        return new Button(BaseElement.byXpath(xpath));
+    }
+
+    public static Button bySpanTextCreate(String phrase) {
+        String xpath = "//span[text()='" + phrase + "']";
+        return new Button(BaseElement.byXpath(xpath));
+    }
+
+    public static Button byIdAndContainsCreate(String phrase1, String phrase2) {
+        String xpath = "//div[@data-test-id=\"" + phrase1 + "\"]//span[contains(text(), \"" + phrase2 + "\")]" ;
+        return new Button(BaseElement.byXpath(xpath));}
 }

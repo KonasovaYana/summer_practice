@@ -8,7 +8,7 @@ public class HomePage extends BasePage {
 
     private final Button openPinCreationButton = Button.byIdAndHrefCreate("create-tab", "/pin-creation-tool/");
     private final Button openAccountPageButton = Button.byIdAndLabelCreate("header-profile","Профиль");
-    private final Button openFirstPinButton = Button.byXpathCreate("//div[@data-test-id='pin']//img");
+    private final Button openFirstPinButton = Button.byXpathCreate("//div[@data-grid-item-idx=\"0\"]//img");
     private final Button sharedAccessButton = Button.byAriaLabelCreate("Отправить");
     private final Input userName = Input.byAriaLabelCreate("Поле поиска");
     private final Button sendPinButton = Button.byButtonIdCreate("sharesheet-contact-send-button");
@@ -18,9 +18,6 @@ public class HomePage extends BasePage {
     private final Input boardName = Input.byInputIdCreate("boardEditName");
     private final Button addBoardButton = Button.byPhraseInXpathCreate("Создать");
     private final Button SavedPinButton = Button.byPhraseInXpathCreate("Сохранено");
-
-    //    private final Input searchBoardName = Input.byAriaLabelCreate("Поиск по вашим доскам");
-//    private final Button saveButton = Button.byButtonPhraseInXpathCreate("board-row-save-button-container");
 
     public void openPinCreation() {
         openPinCreationButton.click("Создать");
@@ -73,12 +70,4 @@ public class HomePage extends BasePage {
     public boolean checkSavedPin() {
         return SavedPinButton.isDisplayed("Сохранено");
     }
-
-//    public void boardName(String name){
-//        searchBoardName.setValue("Поиск", name);
-//    }
-//
-//    public void save(){
-//        saveButton.click("Сохранить");
-//    }
 }
