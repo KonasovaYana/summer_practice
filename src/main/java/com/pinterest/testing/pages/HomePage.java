@@ -17,7 +17,7 @@ public class HomePage extends BasePage {
     private final Button createBoardButton = Button.byPhraseInXpathCreate("Создать доску");
     private final Input boardName = Input.byInputIdCreate("boardEditName");
     private final Button addBoardButton = Button.byPhraseInXpathCreate("Создать");
-    private final Button SavedPinButton = Button.byPhraseInXpathCreate("Сохранено на доске");
+    private final Button SavedPinButton = Button.byPhraseInXpathCreate("Сохранено");
 
     //    private final Input searchBoardName = Input.byAriaLabelCreate("Поиск по вашим доскам");
 //    private final Button saveButton = Button.byButtonPhraseInXpathCreate("board-row-save-button-container");
@@ -71,7 +71,7 @@ public class HomePage extends BasePage {
     }
 
     public boolean checkSavedPin() {
-        return SavedPinButton.isDisplayed("Сохранено на доске");
+        return SavedPinButton.isDisplayed("Сохранено");
     }
 
 //    public void boardName(String name){
