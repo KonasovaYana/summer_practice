@@ -14,6 +14,10 @@ public class Input extends BaseElement {
         getElement().setValue(value);
     }
 
+    public void pressEnter() {
+        getElement().pressEnter();
+    }
+
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public static Input byXpathCreate(String xpath) {return new Input(BaseElement.byXpath(xpath));}

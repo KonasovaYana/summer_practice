@@ -18,6 +18,11 @@ public class HomePage extends BasePage {
     private final Input boardName = Input.byInputIdCreate("boardEditName");
     private final Button addBoardButton = Button.byPhraseInXpathCreate("Создать");
     private final Button SavedPinButton = Button.byPhraseInXpathCreate("Сохранено");
+    private final Button chooseOtherActionsButton = Button.byAriaLabelCreate("Другие действия");
+    private final Button makePinHiddenButton = Button.byButtonIdCreate("pin-action-dropdown-hide");
+    private final Button reasonPinHiddenButton = Button.bySpanTextCreate("Другое");
+    private final Button confirmHideButton = Button.byPhraseInXpathCreate("Отмена");
+    private final Input searchInput = Input.byAriaLabelCreate("Поиск");
 
     public void openPinCreation() {
         openPinCreationButton.click("Создать");
@@ -70,4 +75,29 @@ public class HomePage extends BasePage {
     public boolean checkSavedPin() {
         return SavedPinButton.isDisplayed("Сохранено");
     }
+
+    public void chooseOtherActions() {
+        chooseOtherActionsButton.click("Другие действия");
+    }
+
+    public void makePinHidden() {
+        makePinHiddenButton.click("Скрыть пин");
+    }
+
+    public void reasonPinHidden() {
+        reasonPinHiddenButton.click("Другое");
+    }
+
+    public boolean checkHidden(){
+        return(confirmHideButton.isDisplayed("Отмена"));
+    }
+
+    public void writeQuery(String query) {
+        searchInput.setValue("Поиск", query);
+    }
+
+    public void searchPins() {
+        searchInput.pressEnter();
+    }
+
 }
