@@ -37,4 +37,8 @@ public class Input extends BaseElement {
         String xpath = "//input[@id='" + phrase + "']";
         return new Input(BaseElement.byXpath(xpath));
     }
+
+    public static Input byDivAriaCreate(String phrase) {
+        String xpath = "//div[@aria-label='" + phrase + "']";
+        return new Input(BaseElement.byXpath(xpath));}
 }
