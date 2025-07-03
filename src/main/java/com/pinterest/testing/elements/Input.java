@@ -29,8 +29,12 @@ public class Input extends BaseElement {
     }
 
     public static Input byAriaLabelCreate(String phrase) {
-        String xpath = "//input[@aria-label='" + phrase + "]\n";
+        String xpath = "//input[@aria-label='" + phrase + "']\n";
+        return new Input(BaseElement.byXpath(xpath));
+    }
+
+    public static Input byInputIdCreate(String phrase) {
+        String xpath = "//input[@id='" + phrase + "']";
         return new Input(BaseElement.byXpath(xpath));
     }
 }
-

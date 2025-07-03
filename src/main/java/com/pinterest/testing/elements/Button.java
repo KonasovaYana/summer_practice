@@ -41,6 +41,11 @@ public class Button extends BaseElement {
         return new Button(BaseElement.byXpath(xpath));
     }
 
+    public static Button byIdAndACreate(String phrase) {
+        String xpath = "//a[@data-test-id='" + phrase + "']";
+        return new Button(BaseElement.byXpath(xpath));
+    }
+
     public static Button byIdAndHrefCreate(String phrase1, String phrase2) {
         String xpath = "//a[@data-test-id='" + phrase1 + "' and @href='" + phrase2 + "']" ;
         return new Button(BaseElement.byXpath(xpath));
@@ -76,4 +81,3 @@ public class Button extends BaseElement {
     }
 
 }
-

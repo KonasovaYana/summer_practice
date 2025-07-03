@@ -1,74 +1,89 @@
 package com.pinterest.testing.pages;
-
 import com.pinterest.testing.elements.Button;
-import static com.codeborne.selenide.Selenide.$x;
+import com.pinterest.testing.elements.Input;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import com.codeborne.selenide.Condition;
 public class AccountPage extends BasePage {
-    private static final Logger logger = LoggerFactory.getLogger(LoginPage.class);
-    public AccountPage() {
-        super($x("//div[contains(@data-test-id,'sellithu')]"));
-    }
-    private final Button chooseBoardsButton = Button.createByXpath("//*[@id=\"_boards-profile-tab\"]");
+
+    public AccountPage() {super(byDataTestId("header-profile"));}
+
+    private final Button chooseBoardsButton = Button.byIdCreate("_boards-profile-tab");
+    private final Button chooseFirstBoardsButton = Button.byRoleCreate("listitem");
+    private final Button chooseFirstPinButton = Button.byXpathCreate("(//div[@data-test-id='pinrep-image']//img[contains(@class, 'hCL')])[1]\n");
+    private final Button makePinFavouriteButton = Button.byButtonIdCreate("favorite-button-star");
+    private final Button FavouritesButton = Button.byPhraseInXpathCreate("Удалить из избранного");
+    private final Button choosePinsButton = Button.byIdCreate("_pins-profile-tab");
+    private final Button chooseFavouritesButton = Button.byButtonIdCreate("favorites_pins_button");
+    private final Button chooseMadeByMeButton = Button.byButtonIdCreate("created_by_you_button");
+    private final Button choosePinButton = Button.byGridIdCreate("0");
+    private final Button chooseLikePinButton = Button.byAriaLabelCreate("Отреагировать");
+    private final Button LikeButton = Button.byPhraseInXpathCreate("Мне нравится!");
+//    private final Button createSmthButton = Button.byAriaLabelCreate("Создать пин или доску");
+//    private final Button createBoardButton = Button.byButtonIdCreate("Create board");
+//    private final Input boardName = Input.byInputIdCreate("boardEditName");
+//    private final Button createNamedBoardButton = Button.byButtonIdCreate("board-form-submit-button");
+//    private final Button openHomePageButton = Button.byIdAndACreate("home-tab");
+
+
     public void chooseBoards() {
-        logger.info("Выбираем раздел 'доски'");
-        chooseBoardsButton.click();
+        chooseBoardsButton.click("Доски");
     }
-    private final Button chooseFirstBoardsButton = Button.createByXpath("(//div[@role=\"listitem\"])[1]//a\n");
+
     public void chooseFirstBoards() {
-        logger.info("Выбираем первую доску");
-        chooseFirstBoardsButton.click();
+        chooseFirstBoardsButton.click("Первая доска");
     }
 
-    private final Button chooseFirstPinButton = Button.createByXpath("(//div[@data-test-id='pinrep-image']//img[contains(@class, 'hCL')])[1]\n");
     public void chooseFirstPinBoards() {
-        logger.info("Выбираем первый пин в доске");
-        chooseFirstPinButton.click();
-    }
-    private final Button makePinFavouriteButton = Button.createByXpath("//button[@data-test-id='favorite-button-star']\n");
-    public void makePinFavourite() {
-        logger.info("Добавляем пин в избранное");
-        makePinFavouriteButton.click();
+        chooseFirstPinButton.click("Первый пин");
     }
 
-    private final Button FavouritesButton = Button.createByXpath(".//div[text()='Удалить из избранного']");
+    public void makePinFavourite() {
+        makePinFavouriteButton.click("Добавить в избранное");
+    }
+
     public boolean checkFavourites(){
-        logger.info("Проверяем, добавлен ли элемент в избранное");
-        com.codeborne.selenide.Selenide.sleep(1000);
-        return(FavouritesButton.isDisplayed());
+        return(FavouritesButton.isDisplayed("Удалить из избранного"));
     }
-    private final Button choosePinsButton = Button.createByXpath("//*[@id=\"_pins-profile-tab\"]");
+
     public void choosePins() {
-        logger.info("Выбираем раздел 'пины'");
-        choosePinsButton.click();
+        choosePinsButton.click("Пины");
     }
-    private final Button chooseFavouritesButton = Button.createByXpath("//button[@data-test-id=\"favorites_pins_button\"]");
+
     public void chooseFavourites() {
-        logger.info("Выбираем раздел 'избранное'");
-        chooseFavouritesButton.click();
-        com.codeborne.selenide.Selenide.sleep(1000);
+        chooseFavouritesButton.click("Избранное");
     }
-    private final Button chooseMadeByMeButton = Button.createByXpath("//button[@data-test-id=\"created_by_you_button\"]");
+
     public void chooseMadeByMe() {
-        logger.info("Выбираем раздел 'Созданные мной'");
-        chooseMadeByMeButton.click();
+        chooseMadeByMeButton.click("Созданные мной");
     }
-    private final Button choosePinButton = Button.createByXpath("//div[@data-grid-item-idx=\"0\"]//img");
+
     public void choosePin() {
-        logger.info("Выбираем первый пин из раздела");
-        choosePinButton.click();
+        choosePinButton.click("Первый пин");
     }
-    private final Button chooseLikePinButton = Button.createByXpath("//button[@aria-label=\"Отреагировать\"]");
+
     public void chooseLikePin() {
-        logger.info("Ставим лайк на пин");
-        chooseLikePinButton.click();
-        com.codeborne.selenide.Selenide.sleep(1000);
+        chooseLikePinButton.click("Отреагировать");
     }
-    private final Button LikeButton = Button.createByXpath(".//div[text()='Мне нравится!']");
+
     public boolean checkLikePin() {
-        logger.info("Проверяем поставлен ли лайк");
-        return LikeButton.isDisplayed();
+        return LikeButton.isDisplayed("Мне нравится!");
     }
+//    public void createNew(){
+//        createSmthButton.click("Создать");
+//    }
+//
+//    public void createNewBoard(){
+//        createBoardButton.click("Доска");
+//    }
+//
+//    public void enterBoardName(String name){
+//        boardName.setValue("Название", name);
+//    }
+//
+//    public void createNewNamedBoard(){
+//        createNamedBoardButton.click("Создать");
+//    }
+//
+//    public void openHomePage(){
+//        openHomePageButton.click("Домашняя страница");
+//    }
 }
