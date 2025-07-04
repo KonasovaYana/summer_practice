@@ -107,7 +107,6 @@ public class AccountPage extends BasePage {
         DeleteButton.click("Удаляем пин с доски");
     }
 
-
     public boolean checkConfirmDeletePin() {
         return ConfirmDelete.isDisplayed("Пин удален");
     }

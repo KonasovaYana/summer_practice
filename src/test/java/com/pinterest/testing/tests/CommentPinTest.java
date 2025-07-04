@@ -10,7 +10,7 @@ public class CommentPinTest extends BaseTest {
 
     private static final String PROPERTY_EMAIL = "email";
     private static final String PROPERTY_PASSWORD = "password";
-    private static final String PIN_COMMENT = " Тестовый   комментарий";
+    private static final String PIN_COMMENT = " Тестовый комментарий";
 
     @Test
     public void testCommentPin() {
