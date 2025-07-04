@@ -6,12 +6,32 @@ import com.pinterest.testing.pages.HomePage;
 import com.pinterest.testing.pages.LoginPage;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Тестовый класс для проверки функционала сохранения пинов в Pinterest.
+ * Содержит тест-кейсы, связанные с сохранением пинов на доски,
+ * включая создание новой доски в процессе сохранения пина.
+ */
 public class SavePinTest extends BaseTest {
 
     private static final String PROPERTY_EMAIL = "email";
     private static final String PROPERTY_PASSWORD = "password";
-    private static final String BOARD_NAME = "Первая доска";
+    private static final String BOARD_NAME = "Тестовая доска";
 
+    /**
+     * Тестирует полный процесс сохранения пина, включая:
+     * 1. Авторизацию пользователя
+     * 2. Открытие пина из ленты
+     * 3. Создание новой доски
+     * 4. Сохранение пина на новую доску
+     * 5. Проверку успешного сохранения пина
+     *
+     * Шаги теста:
+     * - Выполняет вход с использованием учетных данных из properties-файла
+     * - Открывает первый пин в домашней ленте
+     * - Создает новую доску с заданным названием
+     * - Сохраняет пин на созданную доску
+     * - Проверяет, что пин был успешно сохранен
+     */
     @Test
     public void testSavePin() {
         String email = getProperty(PROPERTY_EMAIL );
