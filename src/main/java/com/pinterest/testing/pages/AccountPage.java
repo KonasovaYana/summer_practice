@@ -74,7 +74,6 @@ public class AccountPage extends BasePage {
         makePinFavouriteButton.click("Добавить в избранное");
     }
 
-
     /**
      * Проверяет, добавлен ли пин в избранное.
      * @return true если кнопка "Удалить из избранного" отображается, иначе false
