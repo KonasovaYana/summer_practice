@@ -236,7 +236,6 @@ public class AccountPage extends BasePage {
         commentInput.setValue("Добавить комментарий", comment);
     }
 
-
     /**
      * Открывает меню выбора эмодзи.
      */
