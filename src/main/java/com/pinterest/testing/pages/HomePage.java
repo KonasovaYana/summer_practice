@@ -2,8 +2,17 @@ package com.pinterest.testing.pages;
 import com.pinterest.testing.elements.Button;
 import com.pinterest.testing.elements.Input;
 
+/**
+ * Класс, представляющий домашнюю страницу Pinterest.
+ * Содержит методы для взаимодействия с основными элементами главной страницы,
+ * включая создание пинов, поиск, управление досками и другие функции.
+ */
 public class HomePage extends BasePage {
 
+    /**
+     * Конструктор домашней страницы.
+     * Инициализирует страницу с использованием локатора заголовка.
+     */
     public HomePage() {super(byDataTestId("header"));}
 
     private final Button openPinCreationButton = Button.byIdAndHrefCreate("create-tab", "/pin-creation-tool/");
@@ -24,80 +33,142 @@ public class HomePage extends BasePage {
     private final Button confirmHideButton = Button.byPhraseInXpathCreate("Отмена");
     private final Input searchInput = Input.byAriaLabelCreate("Поиск");
 
+    /**
+     * Открывает инструмент создания нового пина.
+     */
     public void openPinCreation() {
         openPinCreationButton.click("Создать");
     }
 
+    /**
+     * Открывает страницу профиля пользователя.
+     */
     public void openAccountPage() {
         openAccountPageButton.click("Профиль");
     }
 
+    /**
+     * Открывает первый пин в ленте.
+     */
     public void openFirstPin() {
         openFirstPinButton.click("Первый пин в ленте");
     }
 
+    /**
+     * Открывает меню общего доступа для текущего пина.
+     */
     public void sharedAccess() {
         sharedAccessButton.click("Общий доступ");
     }
 
-    public void writeUserName(String title) {;
+    /**
+     * Вводит имя пользователя в поле поиска.
+     * @param title имя пользователя для поиска
+     */
+    public void writeUserName(String title) {
         userName.setValue("Вводим имя пользователя", title);
     }
 
+    /**
+     * Отправляет пин выбранному пользователю.
+     */
     public void sendPin() {
         sendPinButton.click("Отправить");
     }
 
-    public boolean checkMessage(){;
+    /**
+     * Проверяет наличие кнопки перехода к чату.
+     * @return true если кнопка "См. чат" отображается, иначе false
+     */
+    public boolean checkMessage(){
         return openChatButton.isDisplayed("См. чат");
     }
 
+    /**
+     * Открывает чат с пользователем.
+     */
     public void openChat() {
         openChatButton.click("См. чат");
     }
 
+    /**
+     * Открывает выбор доски для сохранения.
+     */
     public void profile(){
         profileButton.click("Профиль");
     }
 
+    /**
+     * Начинает процесс создания новой доски.
+     */
     public void createBoard(){
         createBoardButton.click("Создать доску");
     }
 
-    public void enterBoardName(String title) {;
+    /**
+     * Вводит название для новой доски.
+     * @param title название доски
+     */
+    public void enterBoardName(String title) {
         boardName.setValue("Название", title);
     }
 
+    /**
+     * Завершает создание новой доски.
+     */
     public void addBoard(){
         addBoardButton.click("Создать");
     }
 
+    /**
+     * Проверяет, сохранен ли пин.
+     * @return true если текст "Сохранено" отображается, иначе false
+     */
     public boolean checkSavedPin() {
         return SavedPinButton.isDisplayed("Сохранено");
     }
 
+    /**
+     * Открывает меню дополнительных действий для пина.
+     */
     public void chooseOtherActions() {
         chooseOtherActionsButton.click("Другие действия");
     }
 
+    /**
+     * Скрывает текущий пин.
+     */
     public void makePinHidden() {
         makePinHiddenButton.click("Скрыть пин");
     }
 
+    /**
+     * Выбирает причину скрытия пина ("Другое").
+     */
     public void reasonPinHidden() {
         reasonPinHiddenButton.click("Другое");
     }
 
+    /**
+     * Проверяет, скрыт ли пин.
+     * @return true если кнопка "Отмена" отображается, иначе false
+     */
     public boolean checkHidden(){
         return(confirmHideButton.isDisplayed("Отмена"));
     }
 
+    /**
+     * Вводит поисковый запрос.
+     * @param query текст поискового запроса
+     */
     public void writeQuery(String query) {
         searchInput.setValue("Поиск", query);
     }
 
+    /**
+     * Выполняет поиск по введенному запросу.
+     */
     public void searchPins() {
         searchInput.pressEnter();
     }
-
 }
