@@ -12,6 +12,11 @@ import org.slf4j.LoggerFactory;
 public class Button extends BaseElement {
 
     /**
+     * Логгер для записи сообщений
+     */
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    /**
      * Конструктор для создания экземпляра кнопки на основе Selenide элемента.
      * @param element Selenide элемент, представляющий кнопку
      */
@@ -29,11 +34,6 @@ public class Button extends BaseElement {
     }
 
     /**
-     * Логгер для записи сообщений
-     */
-    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
-
-    /**
      * Создает кнопку, найденную по XPath выражению.
      * @param xpath XPath выражение для поиска кнопки
      * @return новый экземпляр Button
@@ -48,7 +48,7 @@ public class Button extends BaseElement {
      * @return новый экземпляр Button
      */
     public static Button byPhraseInXpathCreate(String phrase) {
-        String xpath = ".//div[text()='" + phrase + "']";
+        String xpath = String.format(".//div[text()='%s']", phrase);
         return new Button(BaseElement.byXpath(xpath));
     }
 
@@ -58,7 +58,7 @@ public class Button extends BaseElement {
      * @return новый экземпляр Button
      */
     public static Button byButtonPhraseInXpathCreate(String phrase) {
-        String xpath = "//button[.//div[text()='" + phrase + "']]";
+        String xpath = String.format("//button[.//div[text()='%s']]", phrase);
         return new Button(BaseElement.byXpath(xpath));
     }
 
@@ -68,7 +68,7 @@ public class Button extends BaseElement {
      * @return новый экземпляр Button
      */
     public static Button byButtonTypeCreate(String phrase) {
-        String xpath = "//button[@type='" + phrase + "']";
+        String xpath = String.format("//button[@type='%s']", phrase);
         return new Button(BaseElement.byXpath(xpath));
     }
 
@@ -78,7 +78,7 @@ public class Button extends BaseElement {
      * @return новый экземпляр Button
      */
     public static Button byTextContainCreate(String phrase) {
-        String xpath = "//*[contains(text(), '" + phrase + "')]";
+        String xpath = String.format("//*[contains(text(), '%s')]", phrase);
         return new Button(BaseElement.byXpath(xpath));
     }
 
@@ -89,7 +89,7 @@ public class Button extends BaseElement {
      * @return новый экземпляр Button
      */
     public static Button byIdAndHrefCreate(String phrase1, String phrase2) {
-        String xpath = "//a[@data-test-id='" + phrase1 + "' and @href='" + phrase2 + "']" ;
+        String xpath = String.format("//a[@data-test-id='%s' and @href='%s']", phrase1, phrase2);
         return new Button(BaseElement.byXpath(xpath));
     }
 
@@ -100,7 +100,7 @@ public class Button extends BaseElement {
      * @return новый экземпляр Button
      */
     public static Button byIdAndLabelCreate(String phrase1, String phrase2) {
-        String xpath = "//div[@data-test-id=\"" + phrase1 + "\"]//a[@aria-label=\"" + phrase2 + "\"]" ;
+        String xpath = String.format("//div[@data-test-id=\"%s\"]//a[@aria-label=\"%s\"]", phrase1, phrase2);
         return new Button(BaseElement.byXpath(xpath));
     }
 
@@ -110,7 +110,7 @@ public class Button extends BaseElement {
      * @return новый экземпляр Button
      */
     public static Button byAriaLabelCreate(String phrase) {
-        String xpath = "//button[@aria-label='" + phrase + "']\n";
+        String xpath = String.format("//button[@aria-label='%s']", phrase);
         return new Button(BaseElement.byXpath(xpath));
     }
 
@@ -120,7 +120,7 @@ public class Button extends BaseElement {
      * @return новый экземпляр Button
      */
     public static Button byButtonIdCreate(String phrase) {
-        String xpath = "//button[@data-test-id='" + phrase + "']\n";
+        String xpath = String.format("//button[@data-test-id='%s']", phrase);
         return new Button(BaseElement.byXpath(xpath));
     }
 
@@ -130,7 +130,7 @@ public class Button extends BaseElement {
      * @return новый экземпляр Button
      */
     public static Button byIdCreate(String phrase) {
-        String xpath = "//*[@id='" + phrase + "']";
+        String xpath = String.format("//*[@id='%s']", phrase);
         return new Button(BaseElement.byXpath(xpath));
     }
 
@@ -140,7 +140,7 @@ public class Button extends BaseElement {
      * @return новый экземпляр Button
      */
     public static Button byRoleCreate(String phrase) {
-        String xpath = "(//div[@role='" + phrase + "'])[1]//a\n";
+        String xpath = String.format("(//div[@role='%s'])[1]//a", phrase);
         return new Button(BaseElement.byXpath(xpath));
     }
 
@@ -150,7 +150,7 @@ public class Button extends BaseElement {
      * @return новый экземпляр Button
      */
     public static Button byGridIdCreate(String phrase) {
-        String xpath = "//div[@data-grid-item-idx='" + phrase + "']//img";
+        String xpath = String.format("//div[@data-grid-item-idx='%s']//img", phrase);
         return new Button(BaseElement.byXpath(xpath));
     }
 
@@ -160,9 +160,10 @@ public class Button extends BaseElement {
      * @return новый экземпляр Button
      */
     public static Button byHTitleCreate(String phrase) {
-        String xpath = "//h2[@title='" + phrase + "']";
+        String xpath = String.format("//h2[@title='%s']", phrase);
         return new Button(BaseElement.byXpath(xpath));
     }
+
 
     /**
      * Создает кнопку по роли и классу элемента.
@@ -171,7 +172,7 @@ public class Button extends BaseElement {
      * @return новый экземпляр Button
      */
     public static Button byRoleContainsCreate(String phrase1, String phrase2) {
-        String xpath = "(//div[@role=\"" + phrase1 + "\" and contains(@class, \"" + phrase2 + "\")])[1]" ;
+        String xpath = String.format("(//div[@role=\"%s\" and contains(@class, \"%s\")])[1]", phrase1, phrase2);
         return new Button(BaseElement.byXpath(xpath));
     }
 
@@ -181,7 +182,7 @@ public class Button extends BaseElement {
      * @return новый экземпляр Button
      */
     public static Button byDivIdCreate(String phrase) {
-        String xpath = "//div[@data-test-id='" + phrase + "']";
+        String xpath = String.format("//div[@data-test-id='%s']", phrase);
         return new Button(BaseElement.byXpath(xpath));
     }
 
@@ -191,7 +192,7 @@ public class Button extends BaseElement {
      * @return новый экземпляр Button
      */
     public static Button bySpanTextCreate(String phrase) {
-        String xpath = "//span[text()='" + phrase + "']";
+        String xpath = String.format("//span[text()='%s']", phrase);
         return new Button(BaseElement.byXpath(xpath));
     }
 
@@ -202,6 +203,7 @@ public class Button extends BaseElement {
      * @return новый экземпляр Button
      */
     public static Button byIdAndContainsCreate(String phrase1, String phrase2) {
-        String xpath = "//div[@data-test-id=\"" + phrase1 + "\"]//span[contains(text(), \"" + phrase2 + "\")]" ;
-        return new Button(BaseElement.byXpath(xpath));}
+        String xpath = String.format("//div[@data-test-id=\"%s\"]//span[contains(text(), \"%s\")]", phrase1, phrase2);
+        return new Button(BaseElement.byXpath(xpath));
+    }
 }

@@ -11,6 +11,11 @@ import org.slf4j.LoggerFactory;
 public class Input extends BaseElement {
 
     /**
+     * Логгер для записи сообщений о действиях с полем ввода
+     */
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    /**
      * Конструктор для создания экземпляра элемента ввода.
      * @param element Selenide элемент, представляющий поле ввода
      */
@@ -36,17 +41,12 @@ public class Input extends BaseElement {
     }
 
     /**
-     * Логгер для записи сообщений о действиях с полем ввода
-     */
-    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
-
-    /**
      * Создает элемент ввода по атрибуту name.
      * @param phrase Значение атрибута name
      * @return новый экземпляр Input
      */
     public static Input byInputNameCreate(String phrase) {
-        String xpath = "//input[@name='" + phrase + "']";
+        String xpath = String.format("//input[@name='%s']", phrase);
         return new Input(BaseElement.byXpath(xpath));
     }
 
@@ -56,7 +56,7 @@ public class Input extends BaseElement {
      * @return новый экземпляр Input
      */
     public static Input byIdCreate(String phrase) {
-        String xpath = "//*[@id='" + phrase + "']";
+        String xpath = String.format("//*[@id='%s']", phrase);
         return new Input(BaseElement.byXpath(xpath));
     }
 
@@ -66,7 +66,7 @@ public class Input extends BaseElement {
      * @return новый экземпляр Input
      */
     public static Input byAriaLabelCreate(String phrase) {
-        String xpath = "//input[@aria-label='" + phrase + "']\n";
+        String xpath = String.format("//input[@aria-label='%s']", phrase);
         return new Input(BaseElement.byXpath(xpath));
     }
 
@@ -76,7 +76,7 @@ public class Input extends BaseElement {
      * @return новый экземпляр Input
      */
     public static Input byInputIdCreate(String phrase) {
-        String xpath = "//input[@id='" + phrase + "']";
+        String xpath = String.format("//input[@id='%s']", phrase);
         return new Input(BaseElement.byXpath(xpath));
     }
 
@@ -86,8 +86,9 @@ public class Input extends BaseElement {
      * @return новый экземпляр Input
      */
     public static Input byDivAriaCreate(String phrase) {
-        String xpath = "//div[@aria-label='" + phrase + "']";
-        return new Input(BaseElement.byXpath(xpath));}
+        String xpath = String.format("//div[@aria-label='%s']", phrase);
+        return new Input(BaseElement.byXpath(xpath));
+    }
 
     /**
      * Создает элемент ввода по ID и атрибуту contenteditable.
@@ -96,7 +97,7 @@ public class Input extends BaseElement {
      * @return новый экземпляр Input
      */
     public static Input byIdAndContentCreate(String phrase1, String phrase2) {
-        String xpath = "//div[@id=\"" + phrase1 + "\"]//div[@contenteditable=\"" + phrase2 + "\"]" ;
+        String xpath = String.format("//div[@id=\"%s\"]//div[@contenteditable=\"%s\"]", phrase1, phrase2);
         return new Input(BaseElement.byXpath(xpath));
     }
 }

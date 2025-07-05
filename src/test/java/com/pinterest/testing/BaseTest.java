@@ -33,7 +33,7 @@ public class BaseTest {
         Configuration.browserSize = "1920x1080";
         ChromeOptions options = new ChromeOptions();
         Map<String, Object> prefs = new HashMap<>();
-        prefs.put("profile.default_content_setting_values.notifications", 2); // блокировка уведомлений
+        prefs.put("profile.default_content_setting_values.notifications", 2);
         options.setExperimentalOption("prefs", prefs);
         Configuration.browserCapabilities = options;
         open("https://www.pinterest.com/");
