@@ -32,6 +32,8 @@ public class HomePage extends BasePage {
     private final Button reasonPinHiddenButton = Button.bySpanTextCreate("Другое");
     private final Button confirmHideButton = Button.byPhraseInXpathCreate("Отмена");
     private final Input searchInput = Input.byAriaLabelCreate("Поиск");
+    private final Button homeButton = Button.byIdAndHrefCreate("home-tab", "/");
+    private final Button searchResultButton = Button.byTextContainCreate("flowers");
 
     /**
      * Открывает инструмент создания нового пина.
@@ -170,5 +172,17 @@ public class HomePage extends BasePage {
      */
     public void searchPins() {
         searchInput.pressEnter();
+    }
+
+    public void openHomePage() {
+        homeButton.click("Главная");
+    }
+
+    public void openSearch() {
+        searchInput.click("Поиск");
+    }
+
+    public boolean checkSearchHistory(){
+        return(searchResultButton.isDisplayed("flowers"));
     }
 }
