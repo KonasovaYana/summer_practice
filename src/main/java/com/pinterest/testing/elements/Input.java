@@ -23,6 +23,10 @@ public class Input extends BaseElement {
         super(element);
     }
 
+    public void click(String elementName) {
+        logger.info("Нажатие на поле: {}", elementName);
+        base.click();
+    }
     /**
      * Устанавливает значение в поле ввода с логированием действия.
      * @param fieldName Название поля для логирования

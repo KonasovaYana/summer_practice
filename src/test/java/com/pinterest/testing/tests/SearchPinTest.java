@@ -32,5 +32,8 @@ public class SearchPinTest extends BaseTest {
         HomePage home = new HomePage();
         home.writeQuery(PIN_QUERY);
         home.searchPins();
+        home.openHomePage();
+        home.openSearch();
+        assert home.checkSearchHistory();
     }
 }
