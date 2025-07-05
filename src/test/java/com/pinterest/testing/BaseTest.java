@@ -3,7 +3,10 @@ package com.pinterest.testing;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import com.pinterest.testing.pages.HomePage;
 import org.openqa.selenium.chrome.ChromeOptions;
+import com.pinterest.testing.services.AccountService;
+import com.pinterest.testing.services.LoginService;
 
 import static com.codeborne.selenide.Selenide.*;
 
@@ -22,6 +25,10 @@ import java.util.Properties;
  * - Вспомогательные методы для работы с properties-файлами
  */
 public class BaseTest {
+
+    protected static final String PROPERTY_EMAIL = "email";
+    protected static final String PROPERTY_PASSWORD = "password";
+
     /**
      * Метод выполняемый перед каждым тестом.
      * Настраивает и открывает браузер с заданными параметрами:
@@ -66,5 +73,19 @@ public class BaseTest {
         } catch (IOException e) {
             throw new RuntimeException("Failed to load account properties", e);
         }
+    }
+
+    /**
+     * Предоставляет экземпляр сервиса для работы с процессом авторизации.
+     */
+    protected LoginService loginService() {
+        return new LoginService();
+    }
+
+    /**
+     * Предоставляет экземпляр сервиса для работы с процессом выбора пина, созданного пользователем.
+     */
+    protected AccountService accountService(HomePage homePage) {
+        return new AccountService(homePage);
     }
 }
