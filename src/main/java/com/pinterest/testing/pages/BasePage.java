@@ -11,6 +11,12 @@ import static com.codeborne.selenide.Selenide.$x;
 public abstract class BasePage {
 
     /**
+     * Корневой элемент страницы, используемый для поиска других элементов.
+     * Доступен для использования в классах-наследниках.
+     */
+    protected final SelenideElement baseType;
+
+    /**
      * Конструктор базовой страницы.
      * @param baseType Корневой элемент страницы, относительно которого
      * будут искаться другие элементы
@@ -18,12 +24,6 @@ public abstract class BasePage {
     public BasePage(SelenideElement baseType) {
         this.baseType = baseType;
     }
-
-    /**
-     * Корневой элемент страницы, используемый для поиска других элементов.
-     * Доступен для использования в классах-наследниках.
-     */
-    protected final SelenideElement baseType;
 
     /**
      * Находит элемент по частичному совпадению data-test-id атрибута.

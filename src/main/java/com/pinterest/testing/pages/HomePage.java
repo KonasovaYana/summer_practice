@@ -9,12 +9,6 @@ import com.pinterest.testing.elements.Input;
  */
 public class HomePage extends BasePage {
 
-    /**
-     * Конструктор домашней страницы.
-     * Инициализирует страницу с использованием локатора заголовка.
-     */
-    public HomePage() {super(byDataTestId("header"));}
-
     private final Button openPinCreationButton = Button.byIdAndHrefCreate("create-tab", "/pin-creation-tool/");
     private final Button openAccountPageButton = Button.byIdAndLabelCreate("header-profile","Профиль");
     private final Button openFirstPinButton = Button.byXpathCreate("//div[@data-grid-item-idx=\"0\"]//img");
@@ -32,6 +26,12 @@ public class HomePage extends BasePage {
     private final Button reasonPinHiddenButton = Button.bySpanTextCreate("Другое");
     private final Button confirmHideButton = Button.byPhraseInXpathCreate("Отмена");
     private final Input searchInput = Input.byAriaLabelCreate("Поиск");
+
+    /**
+     * Конструктор домашней страницы.
+     * Инициализирует страницу с использованием локатора заголовка.
+     */
+    public HomePage() {super(byDataTestId("header"));}
 
     /**
      * Открывает инструмент создания нового пина.

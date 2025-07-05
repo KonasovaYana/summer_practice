@@ -9,12 +9,6 @@ import com.pinterest.testing.elements.Input;
  */
 public class AccountPage extends BasePage {
 
-    /**
-     * Конструктор страницы аккаунта.
-     * Инициализирует страницу с использованием локатора заголовка профиля.
-     */
-    public AccountPage() {super(byDataTestId("header-profile"));}
-
     private final Button chooseBoardsButton = Button.byIdCreate("_boards-profile-tab");
     private final Button chooseFirstBoardsButton = Button.byRoleCreate("listitem");
     private final Button chooseFirstPinButton = Button.byXpathCreate("(//div[@data-test-id='pinrep-image']//img[contains(@class, 'hCL')])[1]\n");
@@ -45,6 +39,12 @@ public class AccountPage extends BasePage {
     private final Button emojiButton = Button.byAriaLabelCreate("smiley");
     private final Button sendCommentButton = Button.byAriaLabelCreate("Опубликовать");
     private final Button checkComment = Button.byDivIdCreate("commentThread-comment");
+
+    /**
+     * Конструктор страницы аккаунта.
+     * Инициализирует страницу с использованием локатора заголовка профиля.
+     */
+    public AccountPage() {super(byDataTestId("header-profile"));}
 
     /**
      * Выбирает раздел "Доски" в профиле пользователя.
@@ -265,4 +265,5 @@ public class AccountPage extends BasePage {
     public boolean checkCommentSend(String title) {
         return checkComment.isDisplayed(title);
     }
+
 }

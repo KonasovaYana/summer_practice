@@ -9,12 +9,6 @@ import com.pinterest.testing.elements.Input;
  */
 public class LoginPage extends BasePage {
 
-    /**
-     * Конструктор страницы авторизации.
-     * Инициализирует страницу с использованием локатора формы входа.
-     */
-    public LoginPage() {super(byDataTestId("simple-login"));}
-
     private final Button enterButton =
             Button.byButtonPhraseInXpathCreate("Войти");
     private final Input emailField =
@@ -23,6 +17,12 @@ public class LoginPage extends BasePage {
             Input.byInputNameCreate("password");
     private final Button loginButton =
             Button.byButtonTypeCreate("submit");
+
+    /**
+     * Конструктор страницы авторизации.
+     * Инициализирует страницу с использованием локатора формы входа.
+     */
+    public LoginPage() {super(byDataTestId("simple-login"));}
 
     /**
      * Нажимает кнопку "Войти" для перехода к форме авторизации.

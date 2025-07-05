@@ -11,6 +11,11 @@ import com.codeborne.selenide.SelenideElement;
 public class FileInput extends BaseElement {
 
     /**
+     * Логгер для записи сообщений о действиях с элементом
+     */
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    /**
      * Конструктор для создания экземпляра элемента ввода файла.
      * @param element Selenide элемент, представляющий поле ввода файла
      */
@@ -29,17 +34,12 @@ public class FileInput extends BaseElement {
     }
 
     /**
-     * Логгер для записи сообщений о действиях с элементом
-     */
-    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
-
-    /**
      * Создает элемент ввода файла по типу input.
      * @param phrase Тип input элемента (обычно "file")
      * @return новый экземпляр FileInput
      */
     public static FileInput byFileInputTypeCreate(String phrase) {
-        String xpath = "//input[@type='" + phrase + "']";
+        String xpath = String.format("//input[@type='%s']", phrase);
         return new FileInput(BaseElement.byXpath(xpath));
     }
 }

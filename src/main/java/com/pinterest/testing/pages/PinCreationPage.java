@@ -11,16 +11,16 @@ import com.pinterest.testing.elements.FileInput;
  */
 public class PinCreationPage extends BasePage {
 
+    private final FileInput imageUploadInput = FileInput.byFileInputTypeCreate("file");
+    private final Input titleInput = Input.byIdCreate("storyboard-selector-title");
+    private final Button publishButton = Button.byButtonPhraseInXpathCreate("Опубликовать");
+    private final Button viewPublishedPinButton = Button.byTextContainCreate("Ваш пин опубликован");
+
     /**
      * Конструктор страницы создания пина.
      * Инициализирует страницу, находя корневой элемент по data-test-id.
      */
     public PinCreationPage() {super(byDataTestId("pin-creation"));}
-
-    private final FileInput imageUploadInput = FileInput.byFileInputTypeCreate("file");
-    private final Input titleInput = Input.byIdCreate("storyboard-selector-title");
-    private final Button publishButton = Button.byButtonPhraseInXpathCreate("Опубликовать");
-    private final Button viewPublishedPinButton = Button.byTextContainCreate("Ваш пин опубликован");
 
     /**
      * Загружает изображение для пина.
