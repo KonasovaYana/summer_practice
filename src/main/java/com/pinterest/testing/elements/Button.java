@@ -164,7 +164,6 @@ public class Button extends BaseElement {
         return new Button(BaseElement.byXpath(xpath));
     }
 
-
     /**
      * Создает кнопку по роли и классу элемента.
      * @param phrase1 Роль элемента

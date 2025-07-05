@@ -36,17 +36,21 @@ public class HomePage extends BasePage {
     public HomePage() {super(byDataTestId("header"));}
 
     /**
-     * Открывает инструмент создания нового пина.
+     * Открывает инструмент создания нового пина
+     * и создает новую страницу PinCreationPage.
      */
-    public void openPinCreation() {
+    public PinCreationPage openPinCreation() {
         openPinCreationButton.click("Создать");
+        return new PinCreationPage();
     }
 
     /**
-     * Открывает страницу профиля пользователя.
+     * Открывает страницу профиля пользователя
+     * и создает новую страницу AccountPage.
      */
-    public void openAccountPage() {
+    public AccountPage openAccountPage() {
         openAccountPageButton.click("Профиль");
+        return new AccountPage();
     }
 
     /**
@@ -174,14 +178,23 @@ public class HomePage extends BasePage {
         searchInput.pressEnter();
     }
 
+    /**
+     * Обновляет домашюю страницу.
+     */
     public void openHomePage() {
         homeButton.click("Главная");
     }
 
+    /**
+     * Открывает поле поиска пинов по определенному запросу.
+     */
     public void openSearch() {
         searchInput.click("Поиск");
     }
 
+    /**
+     * Проверяет наличие определенного запроса.
+     */
     public boolean checkSearchHistory(){
         return(searchResultButton.isDisplayed("flowers"));
     }
