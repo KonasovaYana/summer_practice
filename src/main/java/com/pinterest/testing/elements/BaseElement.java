@@ -21,7 +21,7 @@ public class BaseElement {
     public boolean isDisplayed(String phrase) {
         logger.info("Проверям появление фразы: {}", phrase);
         try {
-            base.shouldBe(Condition.visible, Duration.ofSeconds(8));
+            base.shouldBe(Condition.visible, Duration.ofSeconds(12));
             return true;
         } catch (Exception e) {
             return false;

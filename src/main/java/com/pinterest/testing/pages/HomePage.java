@@ -91,13 +91,6 @@ public class HomePage extends BasePage {
     }
 
     /**
-     * Открывает чат с пользователем.
-     */
-    public void openChat() {
-        openChatButton.click("См. чат");
-    }
-
-    /**
      * Открывает выбор доски для сохранения.
      */
     public void profile(){

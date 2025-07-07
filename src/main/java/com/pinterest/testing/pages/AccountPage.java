@@ -15,7 +15,6 @@ public class AccountPage extends BasePage {
     private final Button makePinFavouriteButton = Button.byButtonIdCreate("favorite-button-star");
     private final Button FavouritesButton = Button.byPhraseInXpathCreate("Удалить из избранного");
     private final Button choosePinsButton = Button.byIdCreate("_pins-profile-tab");
-    private final Button chooseFavouritesButton = Button.byButtonIdCreate("favorites_pins_button");
     private final Button chooseMadeByMeButton = Button.byButtonIdCreate("created_by_you_button");
     private final Button choosePinButton = Button.byGridIdCreate("0");
     private final Button chooseLikePinButton = Button.byAriaLabelCreate("Отреагировать");
@@ -87,13 +86,6 @@ public class AccountPage extends BasePage {
      */
     public void choosePins() {
         choosePinsButton.click("Пины");
-    }
-
-    /**
-     * Выбирает раздел "Избранное" в профиле пользователя.
-     */
-    public void chooseFavourites() {
-        chooseFavouritesButton.click("Избранное");
     }
 
     /**
